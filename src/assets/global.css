@@ -1,23 +1,20 @@
-body{
+body {
     background: #e3e1ff;
     color: #444;
 }
-
-.container{
+.container {
     width: 90%;
     max-width: 960px;
     margin: 80px auto;
     border-radius: 20px;
     box-shadow: 2px 4px 6px rgba(28, 6, 49, 0.1);
-    background-color: white;
+    background: white;
 }
-
-.error{
+.error {
     color: #ff3f80;
     font-size: 14px;
 }
-
-button{
+button {
     text-decoration: none;
     background: #5ae4ca;
     color: white;
