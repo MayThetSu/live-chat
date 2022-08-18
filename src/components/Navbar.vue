@@ -10,7 +10,7 @@
 
 <script>
 
-import signout from '../composables/signout'
+import signout from '../composables/signout' 
 import getUser from '../composables/getUser'
 export default {
       setup(){
