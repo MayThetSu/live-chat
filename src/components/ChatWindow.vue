@@ -1,6 +1,6 @@
 <template>
   <div class="chat-window">
-    <div class="messages" >
+    <div class="messages" ref="msgBox">
         <div class="single" v-for="message in formattedMessages" :key="message.id">
             <span class="created-at">{{message.created_at}}</span>
             <span class="name">{{message.name}}</span>
@@ -14,10 +14,15 @@
 import { db } from '@/firebase/config'
 import { ref } from '@vue/reactivity'
 import {formatDistanceToNow} from 'date-fns'
-import { computed } from '@vue/runtime-core'
+import { computed, onUpdated } from '@vue/runtime-core'
 export default {
     setup(){
         let messages=ref([]);
+        let msgBox=ref(null);
+
+        onUpdated(()=>{
+            msgBox.value.scrollTop=msgBox.value.scrollHeight
+        })
         let formattedMessages=computed(()=>{
             return messages.value.map((msg)=>{
                 let formattedTime=formatDistanceToNow(msg.created_at.toDate());
@@ -32,7 +37,7 @@ export default {
             })
             messages.value=results;
         })
-        return {messages,formattedMessages};
+        return {messages,formattedMessages,msgBox};
     }
 }
 </script>
